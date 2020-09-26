@@ -1,2 +1,2 @@
 # Study
-My First Respository on GitHub
+My First Repository on GitHub

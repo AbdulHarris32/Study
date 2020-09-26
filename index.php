@@ -1,6 +1,5 @@
 <?php
-  include('koneksi.php'); //agar index terhubung dengan database, maka koneksi sebagai penghubung harus di include
-
+  include('koneksi.php'); //agar index terhubung dengan database
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,7 +62,7 @@
     </thead>
     <tbody>
       <?php
-      // jalankan query untuk menampilkan semua data diurutkan berdasarkan nim
+      // query untuk menampilkan semua data diurutkan berdasarkan nim
       $query = "SELECT * FROM produk ORDER BY id ASC";
       $result = mysqli_query($koneksi, $query);
       //mengecek apakah ada error ketika menjalankan query
@@ -72,7 +71,7 @@
            " - ".mysqli_error($koneksi));
       }
 
-      //buat perulangan untuk element tabel dari data mahasiswa
+      //buat perulangan untuk element tabel 
       $no = 1; //variabel untuk membuat nomor urut
       // hasil query akan disimpan dalam variabel $data dalam bentuk array
       // kemudian dicetak dengan perulangan while

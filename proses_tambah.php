@@ -2,7 +2,7 @@
 // memanggil file koneksi.php untuk melakukan koneksi database
 include 'koneksi.php';
 
-	// membuat variabel untuk menampung data dari form
+// membuat variabel untuk menampung data dari form
   $name          = $_POST['name'];
   $importir_id   = $_POST['importir_id'];
   $photo         = $_FILES['photo']['name'];
@@ -21,7 +21,7 @@ if($photo != "") {
   $nama_gambar_baru = $angka_acak.'-'.$photo; //menggabungkan angka acak dengan nama file sebenarnya
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {
                 move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
-                  // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
+                  // jalankan query INSERT untuk menambah data ke database 
                   $query = "INSERT INTO produk (name, importir_id, photo, qty, price) VALUES ('$name', '$importir_id', '$nama_gambar_baru', '$qty', '$price' )";
                   $result = mysqli_query($koneksi, $query);
                   // periska query apakah ada error
@@ -30,7 +30,6 @@ if($photo != "") {
                            " - ".mysqli_error($koneksi));
                   } else {
                     //tampil alert dan akan redirect ke halaman index.php
-                    //silahkan ganti index.php sesuai halaman yang akan dituju
                     echo "<script>alert('Data berhasil ditambah.');window.location='index.php';</script>";
                   }
 
@@ -41,13 +40,12 @@ if($photo != "") {
 } else {
    $query = "INSERT INTO produk (name, importir_id, photo, qty, price) VALUES ('$name', '$importir_id', '$qty', '$price', null)";
                   $result = mysqli_query($koneksi, $query);
-                  // periska query apakah ada error
+                  // memeriksa query apakah ada error
                   if(!$result){
                       die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
                            " - ".mysqli_error($koneksi));
                   } else {
                     //tampil alert dan akan redirect ke halaman index.php
-                    //silahkan ganti index.php sesuai halaman yang akan dituju
                     echo "<script>alert('Data berhasil ditambah.');window.location='index.php';</script>";
                   }
 }
